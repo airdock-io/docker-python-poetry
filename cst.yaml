@@ -1,0 +1,20 @@
+schemaVersion: 2.0.0
+metadataTest:
+  env:
+    - key: HOME
+      value: /usr/local/lib
+  # entrypoint: []
+  # cmd: ["/bin/bash"]
+  workdir: "/app"
+fileExistenceTests:
+- name: 'poetry bin'
+  path: '/usr/local/lib/.poetry/bin'
+  shouldExist: true
+- name: 'poetry-entrypoint'
+  path: '/usr/local/bin/poetry-entrypoint'
+  shouldExist: true
+commandTests:
+  - name: "poetry"
+    command: "which"
+    args: ["poetry"]
+    expectedOutput: ["/usr/local/lib/.poetry/bin/poetry"]

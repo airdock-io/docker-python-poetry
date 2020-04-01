@@ -1,0 +1,21 @@
+language: generic
+
+services:
+  - docker
+
+jobs:
+  include:
+  - stage: Lint Dockerfile
+    script:
+      - docker run -v ${PWD}/Dockerfile:/Dockerfile -v ${PWD}/.dockerfilelintrc:/.dockerfilelintrc replicated/dockerfilelint /Dockerfile
+      - docker run -it --rm -v "${PWD}/Dockerfile":/Dockerfile:ro redcoolbeans/dockerlint      
+
+  - stage: Test Image
+    script:
+      - docker build --tag python-poetry:ci .
+      - docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v "$(pwd)":"$(pwd)" -w "$(pwd)" -e CI="true" wagoodman/dive:latest --ci-config=.dive.yaml python-poetry:ci
+      - docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}:/test -w /test zemanlx/container-structure-test:v1.8.0-alpine test --image python-poetry:ci --config cst.yaml
+  # WIP : Docker slim verifications
+  # - stage: Build Slim Image
+  #   script: 
+  #     - docker-slim build --include-path /usr/local/bin python-poetry:latest

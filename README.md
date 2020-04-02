@@ -30,9 +30,9 @@ Just clone the repo with the usual : ```git clone https://github.com/airdock-io/
 Be aware that, before it will execute your command it will execute a ```poetry install``` to make sure that a venv is created and that command will be executed properly.
 See https://python-poetry.org/ for more informations on configration
 
-Then to use the image locally: ```docker run --rm -v ${PWD}/sonar-scanner.properties:/var/sonar-scanner/conf/sonar-scanner.properties -v path/to/your/code:/var/app sonarqube-scanner:latest```
+Then to use the image locally: ```docker run --rm -v ${PWD}:/app python-poetry:latest```
 
-Or to use the image form docker hub: ```docker run --rm -v ${PWD}/sonar-scanner.properties:/var/sonar-scanner/conf/sonar-scanner.properties -v path/to/your/code:/var/app airdock/python-poetry:latest```
+Or to use the image from docker hub: ```docker run --rm -v ${PWD}:/app airdock/python-poetry:latest```
 
 ## Environment variables
 Some of these vars are defined in the Dockerfile and others are not. Vars used by the entrypoint and command should be defined in dockerfile, vars relative to the command are defined (if not in compose *environment* section) in entrypoint with a default value.

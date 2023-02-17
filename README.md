@@ -1,5 +1,9 @@
 [![dockeri.co](https://dockeri.co/image/airdock/python-poetry)](https://hub.docker.com/r/airdock/python-poetry)
 
+> This project is no longer actively maintained.
+>
+> Back in 2017, few open source project provide docker image, etc and our jobs had a real nice goal. Now (2023), all open source community is mature, provides tools and images more than we needs. Thanks to all members for their time and effort.
+
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge)](https://GitHub.com/airdock-io/docker-python-poetry/graphs/commit-activity)
 [![Ask Us Anything !](https://img.shields.io/badge/Ask%20us-anything-1abc9c.svg?style=for-the-badge)](https://github.com/airdock-io)
 ![Open Source Love svg1](https://img.shields.io/static/v1?label=OpenSource&message=%E2%9D%A4&color=blue&style=for-the-badge)
